@@ -1,0 +1,33 @@
+scale les ennemies au court du temps en fonction d'une variable gameDifficulty qui permet de suivre l'état du jeu (difficulté)
+donner des couleurs aux ennemies en fonction de la difficulté
+	- 47F87A Vert level 1
+	- 4A81FF Bleu level 2
+	- 9D207A Violet level 3
+	- A67A00 Jaune level 4
+	- A60005 Rouge level 5
+	- ( multicolor ) level 6
+	- (idée pour le futur) effet electrique niveau épique ...
+
+Triangle 
+	- commun 60%
+	- vitesse modérée
+	- attaque modérée
+
+Carré	
+	- peu commun 35%
+	- vitesse lente
+	- attaque importante
+
+Pentagone 
+	- rare 5 %
+	- vitesse modérée
+	- pas d'attaque
+	- invoque des triangles
+
+Hexagone avec une formation de pentagone
+	- boss
+	- très rare
+	- invocation de triangle et de carré
+	- vitesse très lente
+	- attaque très puissante
+
