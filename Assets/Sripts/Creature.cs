@@ -1,28 +1,40 @@
 using System.Collections;
 using UnityEngine;
 
-public abstract class Creature : MonoBehaviour
+public class Creature : MonoBehaviour
 {
-    protected BaseStats creatureStats;
+    public float statMultiplier = 1f;
+
+    public float maxHealth = 100;
+    public float currentHealth = 100;
+
+    public float speed = 5;
+    
     private bool isFlashing = false;
+
+    public SpriteRenderer _spriteRenderer;
 
     public void TakeDamage(float damage)
     {
-        creatureStats.currentHealth -= damage;
+        currentHealth -= damage;
         TakeDamageFeedback();
 
-        if (creatureStats.currentHealth <= 0f)
+        if (currentHealth <= 0f)
         {
             Die();
         }
     }
 
-    public virtual void TakeDamageFeedback()
+    void Start()
     {
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null && !isFlashing)
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    public void TakeDamageFeedback()
+    {
+        if (_spriteRenderer != null && !isFlashing)
         {
-            StartCoroutine(ResetColor(0.1f, spriteRenderer.color, spriteRenderer));
+            StartCoroutine(ResetColor(0.1f, _spriteRenderer.color, _spriteRenderer));
         }
         else
         {
@@ -39,7 +51,7 @@ public abstract class Creature : MonoBehaviour
         isFlashing = false;
     }
 
-    public virtual void Die()
+    protected virtual void Die()
     {
         Destroy(gameObject);
     }

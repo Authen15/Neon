@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Scripting;
 
 public class Shooting : MonoBehaviour
 {
 	public Transform firePoint;
 	public GameObject bulletPrefab;
 
-	public float fireRate = 1f;
     private float fireCountdown = 0f;
+
+	private PlayerCreature _playerCreature;
+
+	void Awake()
+	{
+		_playerCreature = gameObject.GetComponentInParent<PlayerCreature>();
+	}
 
 	// Update is called once per frame
 	private void Update()
@@ -18,7 +25,7 @@ public class Shooting : MonoBehaviour
 			if(fireCountdown <= 0f)
 			{
 				Shoot();
-				fireCountdown = 1f / fireRate;
+				fireCountdown = 1f / _playerCreature.fireRate;
 			}
 			
 		}
